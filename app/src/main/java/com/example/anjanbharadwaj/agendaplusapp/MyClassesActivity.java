@@ -47,6 +47,7 @@ public class MyClassesActivity extends AppCompatActivity {
     DatabaseReference serverrootuser;
     DatabaseReference root2;
     DatabaseReference root3;
+    String namee;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_classes2);
@@ -55,8 +56,9 @@ public class MyClassesActivity extends AppCompatActivity {
         name = (EditText)findViewById(R.id.nameofclass);
         listview = (ListView)findViewById(R.id.classeslist);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //Fire
         username = user.getUid();
-        root = userroot.child(username);
+        root = userroot.child(username).child("Classes");
 
 
 
@@ -67,9 +69,28 @@ public class MyClassesActivity extends AppCompatActivity {
             public void onClick(View view) {
                     int pin = (int) (Math.floor(Math.random() * 9999) + 1);
                     pin1 = String.valueOf(pin);
+                    namee = name.getText().toString().trim();
+
                     Map<String, Object> map = new HashMap<String, Object>();
                     //Map<String, Object> map2 = new HashMap<String, Object>();
                     //Map<String, Object> map3 = new HashMap<String, Object>();
+                root.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.child(name.getText().toString().trim()).exists()){
+                            Toast.makeText(MyClassesActivity.this, "Sorry, this class already exists. Please choose another name",
+                                    Toast.LENGTH_SHORT).show();
+                            namee = null;
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+                    if(namee.equals(null)) return;
                     map.put(name.getText().toString().trim(), "");
                     root.updateChildren(map);
                     root2 = root.child(name.getText().toString().trim()).child("PIN");
@@ -130,6 +151,9 @@ public class MyClassesActivity extends AppCompatActivity {
     public void register(){
         System.out.println("registerentered");
         serverrootuser = serverroot.child(name.getText().toString().trim()).child("Creator");
+        //Map<String, Object> map = new HashMap<String, Object>();
+        //map.put(username, "");
+        //serverrootuser.updateChildren(map);
         serverrootuser.setValue(username);
         users.add(username);
         serverroot.child(name.getText().toString().trim()).child("Users").setValue(users);

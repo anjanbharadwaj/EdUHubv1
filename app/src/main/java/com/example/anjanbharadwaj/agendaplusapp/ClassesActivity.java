@@ -19,12 +19,14 @@ public class ClassesActivity extends AppCompatActivity {
     Button study;
     Button homework1;
     Button calendar;
+    Button profile;
     DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("UserSide");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classes);
+        profile = (Button)findViewById(R.id.profile);
         classes1 = (Button)findViewById(R.id.classes);
         settings = (Button)findViewById(R.id.buttonsettings);
         homework1 = (Button)findViewById(R.id.homework);
@@ -32,6 +34,12 @@ public class ClassesActivity extends AppCompatActivity {
         study = (Button)findViewById(R.id.study);
         notes = (Button)findViewById(R.id.notes);
         calendar = (Button)findViewById(R.id.calendar);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            }
+        });
         calendar.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -12,6 +12,8 @@ public class CalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         calendarView = (CalendarView)findViewById(R.id.calendarView);
+        long a = calendarView.getDate();
+        calendarView.setMinDate(a);
 
 
 

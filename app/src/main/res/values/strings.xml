@@ -1,17 +1,14 @@
 <resources>
     <string name="app_name">AgendaPlusApp</string>
     <string name="select_country">Select Country</string>
-    <string-array name="country_names">
-        <item>notes</item>
-        <item>notes2</item>
-        <item>notes3</item>
-        <item>notes4</item>
-        <item>notes5</item>
-    </string-array>
     <string name="hello">Classes</string>
     <string name="title_activity_login">Sign in</string>
-
+    <string-array name="spinner_item" textSize="16sp">
+        <item>Notes</item>
+    </string-array>
+    <string name="message_elipses">Message...</string>
     <!-- Strings related to login -->
+    <string name="search_hint">Enter the name of your note here \n and hit save when done.</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>

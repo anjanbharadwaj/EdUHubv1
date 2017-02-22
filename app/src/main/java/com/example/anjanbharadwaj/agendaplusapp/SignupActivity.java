@@ -18,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +35,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     private FirebaseAuth firebaseAuth;
     DatabaseReference userroot = FirebaseDatabase.getInstance().getReference().child("UserSide");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,13 +92,30 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                             Map<String, Object> map4 = new HashMap<String, Object>();
                             map4.put(FirebaseAuth.getInstance().getCurrentUser().getUid().toString(), "");
                             userroot.updateChildren(map4);
-                            startActivity(new Intent(getApplicationContext(), ClassesActivity.class));
+                            /*
+                            firebaseAuth.getCurrentUser().sendEmailVerification();
+                            Toast.makeText(SignupActivity.this,"Please check your email to verify this account",Toast.LENGTH_LONG).show();
+                            if(firebaseAuth.getCurrentUser().isEmailVerified()) {
+                                startActivity(new Intent(getApplicationContext(), ClassesActivity.class));
+                            }
+                            else{
+                                while(!firebaseAuth.getCurrentUser().isEmailVerified()){
+                                    try {
+                                        Thread.currentThread().sleep(1000);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                */
+                                startActivity(new Intent(getApplicationContext(), ClassesActivity.class));
+
                         }else{
                             //display some message here
                             Toast.makeText(SignupActivity.this,"Registration Error",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+
 
     }
 

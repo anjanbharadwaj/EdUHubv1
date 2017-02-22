@@ -7,6 +7,15 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <permission
+        android:name="com.example.anjanbharadwaj.agendaplusapp.gcm.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.anjanbharadwaj.agendaplusapp.gcm.permission.C2D_MESSAGE" />
 
     <application
         android:allowBackup="true"
@@ -21,19 +30,60 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DeleteHomework"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".Forgot"
-            android:theme = "@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".Forgot"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Addnote"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Note"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".HomeworkActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
         <activity android:name=".ClassesActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".SettingsClasses" />
-        <activity android:name=".CalendarActivity" />
-        <activity android:name=".HomeworkActivity" />
-        <activity android:name=".Stopwatch" />
-        <activity android:name=".Notes" />
-        <activity android:name=".ClassFilesActivity" />
-        <activity android:name=".MyClassesActivity" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity
+            android:name=".SignupActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".SettingsClasses"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".CalendarActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".Stopwatch"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".Notes"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".ClassFilesActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".MyClassesActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".AboutActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".ListUserActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
+        <activity
+            android:name=".MessagingActivity"
+            android:theme="@style/AppTheme.NoActionBar2" />
+
+        <service android:name=".MessageService" />
+
+        <activity android:name=".Messenger"></activity>
     </application>
 
 </manifest>

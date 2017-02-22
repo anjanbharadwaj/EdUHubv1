@@ -132,8 +132,8 @@ public class SettingsClasses extends AppCompatActivity {
         //Map<String, Object> maphwfake = new HashMap<String, Object>();
         //map4.put(username, "");
         findnameroot.child(c).child("Users").setValue(currentusers);
-        usersideroot.child(username).child(c).child("PIN").setValue(pin);
-        usersideroot.child(username).child(c).child("Password").setValue(password);
+        usersideroot.child(username).child("Classes").child(c).child("PIN").setValue(pin);
+        usersideroot.child(username).child("Classes").child(c).child("Password").setValue(password);
         //usersideroot.child(username).child("AllMyHomework").setValue(currenthw);
         //map.put(c, "");
         //mappin.put(pin, "");
